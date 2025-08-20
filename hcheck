@@ -1,0 +1,37 @@
+#!/usr/bin/node
+const { exec } = require("child_process");
+const args = process.argv.slice(2);
+const url = args[0];
+const hostWs = args[2];
+function wsChecker(url, host) {
+    return new Promise(resolve => {
+        exec(
+            `curl -I ${url} -H "Connection: Upgrade" -H "Upgrade: websocket" -H "Host: ${host}"`,
+            (error, stdout, stderr) => {
+                if (error) {
+                    resolve(false);
+                } else if (stderr) {
+                    resolve(false);
+                }
+                if (stdout.includes("Upgrade: websocket")) {
+                    console.log(
+                        `Output:\n${stdout}\n[+] Success upgrade to Websocket`
+                    );
+                } else {
+                    console.log(
+                        `Output:\n${stdout}\n[+] Failed upgrade to Websocket`
+                    );
+                }
+            }
+        );
+    });
+}
+
+(async () => {
+    if (url && args[1] === "-hws" && hostWs) {
+        await wsChecker(url, hostWs);
+        process.exit(0);
+    } else {
+        process.exit(0);
+    }
+})();
