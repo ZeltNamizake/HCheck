@@ -36,7 +36,6 @@ function wsChecker(url, host) {
 Usage: ./hcheck <url> -hws <host_ws>
 
 Options:
-  <url> : The URL you want to check
   -hws <host_ws> : Websocket Host (<host_ws>) that supports websockets
 
 Example: ./hcheck http://example.com -hws ex.websocket.org`;
