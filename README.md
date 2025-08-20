@@ -19,4 +19,6 @@ Run the commands below:<br>
 
 `git clone https://github.com/ZeltNamizake/HCheck && cd HCheck`<br>
 
-`chmod +x hcheck`
+`chmod +x hcheck`<br>
+
+`./hcheck -h`
