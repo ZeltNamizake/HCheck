@@ -31,7 +31,17 @@ function wsChecker(url, host) {
     if (url && args[1] === "-hws" && hostWs) {
         await wsChecker(url, hostWs);
         process.exit(0);
+    } else if (args[0] === "-h") {
+        const info = `"HCheck" is a host bug checking tool for tunneling via HTTP Websocket.
+Usage: ./hcheck <url> -hws <host_ws>
+
+Options:
+  <url> : The URL you want to check
+  -hws <host_ws> : Websocket Host (<host_ws>) that supports websockets
+
+Example: ./hcheck http://example.com -hws ex.websocket.org`;
+        console.log(info);
     } else {
-        process.exit(0);
+        console.log(`Invalid Command!\nTry './hcheck -h' for information`);
     }
 })();
